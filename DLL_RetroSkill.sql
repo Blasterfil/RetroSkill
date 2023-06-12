@@ -156,7 +156,6 @@ id_cliente int not null,
 id_empregado int not null,
 data_ordem_trabalho date not null,
 trabalho_urgente bit not null,
-custo_total money,
 data_conclusao_trabalho date,
 observacoes varchar (max),
 FOREIGN KEY (id_loja) REFERENCES LOJAS(id_loja),
@@ -205,6 +204,7 @@ CREATE TABLE RECIBOS
 (
 id_recibo int primary key identity (1,1),
 id_ordem_trabalho int not null,
+preco_total money,
 data_emissao date not null,
 FOREIGN KEY (id_ordem_trabalho) REFERENCES ORDEM_TRABALHOS(id_ordem_trabalho),
 )
