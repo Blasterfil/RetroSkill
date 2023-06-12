@@ -1,3 +1,3 @@
-# ![](RetroSkill_Logo_Green_BG.png) 
+# ![](Retro_Logo_GreenV2_BG.png) RetroSkill 
 
 ## Sistema de Informação de Retrosarias
