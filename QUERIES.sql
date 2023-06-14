@@ -3,14 +3,14 @@ USE RETROSKILL
 --QUERY a
 --Todas as lojas da zona de Lisboa CONCLUÍDO
 -- *CONCLUÍDO*
-SELECT * FROM LOJAS
+SELECT id_loja AS Loja, nome_zona AS Zona , morada_loja AS Morada, nif_loja AS NIF, telefone_loja AS Telefone, email_loja AS Loja FROM LOJAS
 INNER JOIN ZONAS ON ZONAS.id_zona = LOJAS.id_zona_loja
 WHERE ZONAS.nome_zona = 'Lisboa'
 
 --QUERY b
 --Informação sobre os trabalhos não concluídos, por ordem crescente de data de início (CONCLUÍDO - REVER SELECT)
 -- *CONCLUÍDO*
-SELECT id_ordem_trabalho, ORDEM_TRABALHOS.id_loja, nome_zona AS Zona_Loja, nome_cliente, apelido_cliente, nome_empregado, apelido_empregado, data_ordem_trabalho AS data_inicio, data_conclusao_trabalho AS Concluído FROM ORDEM_TRABALHOS
+SELECT id_ordem_trabalho AS Ordem_Trabalho, ORDEM_TRABALHOS.id_loja AS Loja, nome_zona AS Zona, nome_cliente, apelido_cliente, nome_empregado, apelido_empregado, data_ordem_trabalho AS data_inicio, data_conclusao_trabalho AS Concluído FROM ORDEM_TRABALHOS
 INNER JOIN LOJAS ON LOJAS.id_loja = ORDEM_TRABALHOS.id_loja
 INNER JOIN ZONAS ON ZONAS.id_zona = LOJAS.id_zona_loja
 INNER JOIN CLIENTES ON CLIENTES.id_cliente = ORDEM_TRABALHOS.id_cliente
@@ -21,19 +21,28 @@ ORDER BY data_ordem_trabalho ASC
 --QUERY c
 --Os trabalhos urgentes aceites, solicitados pelo cliente
 -- *CONCLUÍDO*
-SELECT * FROM ORDEM_TRABALHOS
+SELECT id_ordem_trabalho AS Ordem_Trabalho, id_loja AS Loja, nome_cliente, apelido_cliente, data_ordem_trabalho AS Inicio, trabalho_urgente AS Urgente, data_conclusao_trabalho As Concluido FROM ORDEM_TRABALHOS
+INNER JOIN CLIENTES ON CLIENTES.id_cliente = ORDEM_TRABALHOS.id_cliente
 WHERE trabalho_urgente = 1
 
 --QUERY d
---O arranjo mais caro (VOU COLOCAR O ARRANJO MAIS CARO QUE FOI EFECTUADO - PODE SER O DA TABELA DE PREÇOS?)
-SELECT * FROM LISTA_ARRANJOS
-
+--O arranjo mais caro (Na Tabela de ARRANJOS)
+-- *CONCLUÍDO*
+SELECT TOP 1 * FROM ARRANJOS
+ORDER BY preco_arranjo DESC
+--O arranjo mais caro (Se for o arranjo efectuado que teve o maior custo)
+-- *CONCLUÍDO*
+SELECT TOP 1 (ARRANJOS.preco_arranjo * LISTA_ARRANJOS.quantidade_arranjo) * (ORDEM_TRABALHOS.trabalho_urgente + 1) AS CUSTO_TOTAL FROM ORDEM_TRABALHOS
+INNER JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
+INNER JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
+ORDER BY CUSTO_TOTAL DESC
 
 --QUERY e
---O custo do arranjo das peças, por tipo de arranjo (CONCLUÍDO - REVER SELECT)
-SELECT nome_arranjo, nome_peca, preco_arranjo FROM ARRANJOS
+--O custo do arranjo das peças, por tipo de arranjo
+-- *CONCLUÍDO*
+SELECT nome_arranjo AS Arranjo, nome_peca AS Peca, preco_arranjo AS Preco FROM ARRANJOS
 INNER JOIN PECAS ON PECAS.id_peca = ARRANJOS.id_peca
-ORDER BY nome_arranjo
+ORDER BY preco_arranjo DESC
 
 --QUERY f
 --O tipo de arranjo que nunca foi pedido (VOU ESCOLHER O 13)
@@ -44,21 +53,38 @@ RIGHT JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_arranjo = ARRANJOS.id_arranjo
 WHERE LISTA_ARRANJOS.id_arranjo <> ARRANJOS.id_arranjo
 
 --QUERY g
---A loja que tem mais pedidos entregues (CONCLUÍDO - REVER SELECT)
-SELECT TOP 1 id_loja, COUNT(data_conclusao_trabalho) FROM ORDEM_TRABALHOS
+--A loja que tem mais pedidos entregues
+-- *CONCLUÍDO*
+SELECT TOP 1 id_loja, COUNT(data_conclusao_trabalho) AS Trabalhos_Entregues FROM ORDEM_TRABALHOS
 GROUP BY id_loja
 
 --QUERY h
 --A quantidade de peças arranjadas da loja 1, dos últimos 7 dias
 --(CONCLUÍDO - REVER SELECT)
+SELECT COUNT(quantidade_arranjo) AS Quantidade_Arranjos, LOJAS.id_loja FROM LISTA_ARRANJOS
+INNER JOIN ORDEM_TRABALHOS ON ORDEM_TRABALHOS.id_ordem_trabalho = LISTA_ARRANJOS.id_ordem_trabalho
+INNER JOIN LOJAS ON LOJAS.id_loja = ORDEM_TRABALHOS.id_loja
+WHERE LOJAS.id_loja = 1 AND ORDEM_TRABALHOS.data_conclusao_trabalho <= GETDATE() AND ORDEM_TRABALHOS.data_conclusao_trabalho >= DATEADD(DAY, -7, CAST(GETDATE() AS date))
+GROUP BY LOJAS.id_loja
+
+SELECT * FROM ORCAMENTOS
 
 --QUERY i
 --Os trabalhos que incluem arranjos de camisas e que ainda não foram levantados
---(CONCLUÍDO - REVER SELECT)
+-- *CONCLUÍDO*
+SELECT ORDEM_TRABALHOS.id_ordem_trabalho, LISTA_ARRANJOS.id_arranjo, nome_peca FROM ORDEM_TRABALHOS
+INNER JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
+INNER JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
+INNER JOIN PECAS ON PECAS.id_peca = ARRANJOS.id_peca
+WHERE ORDEM_TRABALHOS.data_conclusao_trabalho IS NULL AND PECAS.id_peca = 1
 
 --QUERY j
 --Os trabalhos que não foram pagos e foram devolvidos
 --(CONCLUÍDO - REVER SELECT)
+--TENHO QUE LIGAR A DEVOLUCAO À ORDEM TRABALHOS
+SELECT * FROM ORCAMENTOS
+SELECT * FROM DEVOLUCOES
+SELECT * FROM RECIBOS
 
 --QUERY k
 --Os pedidos urgentes que incluem peças com pelo menos 2 cores diferentes
