@@ -204,16 +204,16 @@ CREATE TABLE RECIBOS
 (
 id_recibo int primary key identity (1,1),
 id_ordem_trabalho int not null,
-preco_total money,
 data_emissao date not null,
 FOREIGN KEY (id_ordem_trabalho) REFERENCES ORDEM_TRABALHOS(id_ordem_trabalho),
 )
 
-CREATE TABLE REEMBOLSOS
+CREATE TABLE DEVOLUCOES
 (
 id_reembolso int primary key identity (1,1),
-id_recibo int not null,
-data_reembolso date not null,
+id_recibo int,
+data_reembolso date,
+data_devolucao date not null,
 razao_reembolso varchar (max) not null,
 FOREIGN KEY (id_recibo) REFERENCES RECIBOS(id_recibo),
 )
