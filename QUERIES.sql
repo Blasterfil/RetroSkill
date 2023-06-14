@@ -102,3 +102,9 @@ INNER JOIN LOJAS ON LOJAS.id_loja = ORDEM_TRABALHOS.id_loja
 INNER JOIN ZONAS ON ZONAS.id_zona = LOJAS.id_zona_loja
 INNER JOIN CLIENTES ON Clientes.id_cliente = ORDEM_TRABALHOS.id_cliente
 INNER JOIN EMPREGADOS ON EMPREGADOS.id_empregado = ORDEM_TRABALHOS.id_empregado
+
+SELECT * FROM ORDEM_TRABALHOS
+SELECT ORDEM_TRABALHOS.id_ordem_trabalho, ((LISTA_ARRANJOS.quantidade_arranjo * ARRANJOS.preco_arranjo) * (ORDEM_TRABALHOS.trabalho_urgente * 1.5) + (ORCAMENTOS.preco_arranjo)) AS TOTAL FROM ORDEM_TRABALHOS
+JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
+JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
+--JOIN ORCAMENTOS ON ORCAMENTOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
