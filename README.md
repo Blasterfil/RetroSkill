@@ -9,3 +9,5 @@
 3 - Para inserir os registos nas tabelas utilizar o ficheiro [DML_RetroSkill.sql](DML_RetroSkill.sql).
 
 4 - Para efectuar as "Queries" á Base de Dados utilizar o ficheiro [QUERIES.sql](QUERIES.sql).
+
+5 - Para aceder ao ficheiro de backup da Base de Dados clique [aqui](RetroSkill.bak)
