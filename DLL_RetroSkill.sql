@@ -157,6 +157,7 @@ id_empregado int not null,
 data_ordem_trabalho date not null,
 trabalho_urgente bit not null,
 data_conclusao_trabalho date,
+data_levantamento_cliente date,
 observacoes varchar (max),
 FOREIGN KEY (id_loja) REFERENCES LOJAS(id_loja),
 FOREIGN KEY (id_cliente) REFERENCES CLIENTES(id_cliente),
@@ -212,8 +213,10 @@ CREATE TABLE DEVOLUCOES
 (
 id_reembolso int primary key identity (1,1),
 id_recibo int,
+id_ordem_trabalho int not null,
 data_reembolso date,
 data_devolucao date not null,
 razao_reembolso varchar (max) not null,
 FOREIGN KEY (id_recibo) REFERENCES RECIBOS(id_recibo),
+FOREIGN KEY (id_ordem_trabalho) REFERENCES ORDEM_TRABALHOS(id_ordem_trabalho),
 )

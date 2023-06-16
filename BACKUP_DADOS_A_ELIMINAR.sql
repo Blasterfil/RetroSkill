@@ -90,3 +90,28 @@ SELECT * FROM ORCAMENTOS
 SELECT * FROM RECIBOS
 
 SELECT * FROM REEMBOLSOS
+
+SELECT 
+    (SELECT SUM(tabela1.quantidade * tabela2.preco) FROM tabela1 JOIN tabela2 ON tabela1.chave = tabela2.chave) AS total1,
+    (SELECT SUM(tabela3.quantidade * tabela4.preco) FROM tabela3 JOIN tabela4 ON tabela3.chave = tabela4.chave) AS total2
+
+--CRIAR DATA DE LEVANTAMENTO DAS PEÇAS NA TABELA ORDEM DE TRABALHOS
+
+SELECT *
+FROM (
+  SELECT v1.id, v1.total_venda_com_taxa, v2.total_venda_sem_taxa
+  FROM (
+    SELECT id, SUM(quantidade * preco) AS total_venda_com_taxa
+    FROM vendas
+    WHERE taxa_urgencia = 1
+    GROUP BY id
+  ) v1
+  JOIN (
+    SELECT id, SUM(quantidade * preco) AS total_venda_sem_taxa
+    FROM vendas
+    WHERE taxa_urgencia = 0
+    GROUP BY id
+  ) v2 ON v1.id = v2.id
+) subquery
+WHERE total_venda_com_taxa > total_venda_sem_taxa;
+
