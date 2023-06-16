@@ -10,4 +10,4 @@
 
 4 - Para efectuar as "Queries" á Base de Dados utilizar o ficheiro [QUERIES.sql](QUERIES.sql).
 
-5 - Para aceder ao ficheiro de backup da Base de Dados clique [aqui](RetroSkill.bak)
+5 - Para aceder ao ficheiro de backup da Base de Dados clique [aqui](RetroSkill.bak).
