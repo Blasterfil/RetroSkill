@@ -32,4 +32,4 @@ O Script para inserir os registos das moradas nos clientes encontram-se no fiche
 
 ## APRESENTAÇÃO
 
-Para ver a apresentação de dia 19/06/2023[RetroSkill_Presentation](RetroSkill_Presentation.pptx).
+Para ver a apresentação de dia 19/06/2023 [RetroSkill_Presentation](RetroSkill_Presentation.pptx).
