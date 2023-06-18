@@ -117,9 +117,6 @@ telefone_cliente varchar (9),
 email_cliente varchar (max),
 )
 
-ALTER TABLE CLIENTES
-ADD morada_cliente varchar(max);
-
 CREATE TABLE ENCOMENDAS
 (
 id_encomenda int primary key identity (1,1),
@@ -223,3 +220,5 @@ razao_reembolso varchar (max) not null,
 FOREIGN KEY (id_recibo) REFERENCES RECIBOS(id_recibo),
 FOREIGN KEY (id_ordem_trabalho) REFERENCES ORDEM_TRABALHOS(id_ordem_trabalho),
 )
+--ALTER TABLE CLIENTES
+--ADD morada_cliente varchar(max);
