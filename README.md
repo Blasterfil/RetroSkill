@@ -14,4 +14,4 @@
 
 6 - Para ver o [Modelo Entidade Associação](Modelo_Entidade_Associacao.png).
 
-7 - Para ver o [Modelo Relacional](Modelo_Relacional.png)
+7 - Para ver o [Modelo Relacional](Modelo_Relacional.png).
