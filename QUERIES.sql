@@ -145,7 +145,7 @@ SELECT ORDEM_TRABALHOS.id_loja, SUM((ARRANJOS.preco_arranjo * LISTA_ARRANJOS.qua
 INNER JOIN LOJAS ON ORDEM_TRABALHOS.id_loja = LOJAS.id_loja
 INNER JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
 INNER JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
-WHERE ORDEM_TRABALHOS.data_ordem_trabalho >= DATEADD(DAY, -30, GETDATE())
+WHERE ORDEM_TRABALHOS.data_ordem_trabalho >= DATEADD(MONTH, -1, GETDATE())
 GROUP BY ORDEM_TRABALHOS.id_loja
 HAVING SUM((ARRANJOS.preco_arranjo * LISTA_ARRANJOS.quantidade_arranjo) * (ORDEM_TRABALHOS.trabalho_urgente + 1)) =
 (
@@ -155,10 +155,8 @@ SELECT SUM((A2.preco_arranjo * LA2.quantidade_arranjo) * (OT2.trabalho_urgente +
 INNER JOIN LOJAS L2 ON OT2.id_loja = L2.id_loja
 INNER JOIN LISTA_ARRANJOS LA2 ON LA2.id_ordem_trabalho = OT2.id_ordem_trabalho
 INNER JOIN ARRANJOS A2 ON A2.id_arranjo = LA2.id_arranjo
-WHERE OT2.data_ordem_trabalho >= DATEADD(DAY, -30, GETDATE())
+WHERE OT2.data_ordem_trabalho >= DATEADD(MONTH, -1, GETDATE())
 GROUP BY OT2.id_loja
 ) LOJA_MENOS_VENDE
 )
 ORDER BY TOTAL ASC
-
-SELECT * FROM CLIENTES
