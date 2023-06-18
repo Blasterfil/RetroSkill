@@ -117,6 +117,9 @@ telefone_cliente varchar (9),
 email_cliente varchar (max),
 )
 
+ALTER TABLE CLIENTES
+ADD morada_cliente varchar(max);
+
 CREATE TABLE ENCOMENDAS
 (
 id_encomenda int primary key identity (1,1),

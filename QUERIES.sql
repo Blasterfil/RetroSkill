@@ -63,12 +63,13 @@ ORDER BY preco_arranjo DESC
 --QUERY f
 --O tipo de arranjo que nunca foi pedido
 -- *CONCLUÍDO*
-SELECT id_arranjo, nome_peca, nome_arranjo, descricao_arranjo, preco_arranjo FROM ARRANJOS
+SELECT id_arranjo, nome_peca AS Peça, nome_arranjo AS Arranjo, descricao_arranjo AS Descrição, preco_arranjo AS Preço FROM ARRANJOS
 INNER JOIN PECAS ON PECAS.id_peca = ARRANJOS.id_peca
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM LISTA_ARRANJOS
-    WHERE LISTA_ARRANJOS.id_arranjo = ARRANJOS.id_arranjo
+WHERE NOT EXISTS
+(
+SELECT 1
+FROM LISTA_ARRANJOS
+WHERE LISTA_ARRANJOS.id_arranjo = ARRANJOS.id_arranjo
 )
 
 --QUERY g
@@ -89,7 +90,7 @@ GROUP BY LOJAS.id_loja
 --QUERY i
 --Os trabalhos que incluem arranjos de camisas e que ainda não foram levantados - 
 -- *CONCLUÍDO*
-SELECT ORDEM_TRABALHOS.id_ordem_trabalho, LISTA_ARRANJOS.id_arranjo, nome_arranjo, nome_peca, data_levantamento_cliente FROM ORDEM_TRABALHOS
+SELECT ORDEM_TRABALHOS.id_ordem_trabalho AS ID_OT, LISTA_ARRANJOS.id_arranjo AS ID_AR, nome_arranjo AS Arranjo, nome_peca AS Peça, data_levantamento_cliente FROM ORDEM_TRABALHOS
 INNER JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
 INNER JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
 INNER JOIN PECAS ON PECAS.id_peca = ARRANJOS.id_peca
@@ -104,7 +105,7 @@ WHERE id_recibo IS NULL
 --QUERY k
 --Os pedidos urgentes que incluem peças com pelo menos 2 cores diferentes
 -- *CONCLUÍDO*
-SELECT ORDEM_TRABALHOS.id_ordem_trabalho AS ID_OT, trabalho_urgente FROM ORDEM_TRABALHOS
+SELECT ORDEM_TRABALHOS.id_ordem_trabalho AS ID_OT, trabalho_urgente AS Urgente FROM ORDEM_TRABALHOS
 INNER JOIN LISTA_ARRANJOS ON LISTA_ARRANJOS.id_ordem_trabalho = ORDEM_TRABALHOS.id_ordem_trabalho
 INNER JOIN ARRANJOS ON ARRANJOS.id_arranjo = LISTA_ARRANJOS.id_arranjo
 INNER JOIN PECAS ON PECAS.id_peca = ARRANJOS.id_peca
@@ -158,4 +159,6 @@ WHERE OT2.data_ordem_trabalho >= DATEADD(DAY, -30, GETDATE())
 GROUP BY OT2.id_loja
 ) LOJA_MENOS_VENDE
 )
-ORDER BY TOTAL ASC;
+ORDER BY TOTAL ASC
+
+SELECT * FROM CLIENTES

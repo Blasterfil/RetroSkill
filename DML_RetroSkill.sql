@@ -4,7 +4,7 @@ USE RETROSKILL
 INSERT INTO ZONAS VALUES ('Lisboa');
 INSERT INTO ZONAS VALUES ('Porto');
 INSERT INTO ZONAS VALUES ('Coimbra');
-INSERT INTO ZONAS VALUES ('Faro');
+INSERT INTO ZONAS VALUES ('Farro');
 INSERT INTO ZONAS VALUES ('Viseu');
 
 --Lojas da Zona de Lisboa
@@ -86,6 +86,7 @@ INSERT INTO MATERIAIS VALUES ('Algodão');
 INSERT INTO MATERIAIS VALUES ('Linho');
 INSERT INTO MATERIAIS VALUES ('Ganga');
 INSERT INTO MATERIAIS VALUES ('Seda');
+INSERT INTO MATERIAIS VALUES ('Lycra');
 
 --Tamanhos do Vestuário
 INSERT INTO TAMANHOS VALUES ('40');
@@ -567,3 +568,133 @@ INSERT INTO RECIBOS VALUES (39,'2023-06-16');
 INSERT INTO ORDEM_TRABALHOS VALUES(8, 40, 23, '2023-06-16', 0,null, null,null);
 INSERT INTO LISTA_ARRANJOS VALUES(30, 1, 3, 2, 6, 1);
 INSERT INTO RECIBOS VALUES (40,'2023-06-16');
+
+--UPDATES
+UPDATE ZONAS
+SET nome_zona = 'Faro'
+WHERE nome_zona = 'Farro';
+
+--DELETE
+DELETE FROM MATERIAIS
+WHERE nome_material = 'Lycra';
+
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Flores, 123, Lisboa'
+WHERE id_cliente = 1; 
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida Central, 456, Porto'
+WHERE id_cliente = 2;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa do Sol, 789, Braga'
+WHERE id_cliente = 3;
+UPDATE CLIENTES
+SET morada_cliente = 'Praça da Liberdade, 101, Coimbra'
+WHERE id_cliente = 4;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua dos Sonhos, 222, Faro'
+WHERE id_cliente = 5;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida da Praia, 333, Aveiro'
+WHERE id_cliente = 6;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa das Oliveiras, 444, Viseu'
+WHERE id_cliente = 7;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua Principal, 555, Évora'
+WHERE id_cliente = 8;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida dos Amores, 666, Portimão'
+WHERE id_cliente = 9;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Colinas, 777, Setúbal'
+WHERE id_cliente = 10;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa do Rio, 888, Viana do Castelo'
+WHERE id_cliente = 11;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua dos Sinos, 999, Leiria'
+WHERE id_cliente = 12;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida das Palmeiras, 1111, Funchal'
+WHERE id_cliente = 13;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Gaivotas, 1212, Ponta Delgada'
+WHERE id_cliente = 14;
+UPDATE CLIENTES
+SET morada_cliente = 'Praça dos Lírios, 1313, Guarda'
+WHERE id_cliente = 15;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida das Estrelas, 1414, Covilhã'
+WHERE id_cliente = 16;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua dos Jardins, 1515, Beja'
+WHERE id_cliente = 17;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa das Fontes, 1616, Chaves'
+WHERE id_cliente = 18;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua dos Coqueiros, 1717, Castelo Branco'
+WHERE id_cliente = 19;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida dos Girassóis, 1818, Évora'
+WHERE id_cliente = 20;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Palmeiras, 1919, Viseu'
+WHERE id_cliente = 21;
+UPDATE CLIENTES
+SET morada_cliente = 'Praça Central, 2020, Portimão'
+WHERE id_cliente = 22;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida das Oliveiras, 2121, Faro'
+WHERE id_cliente = 23;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua do Mar, 2222, Lisboa'
+WHERE id_cliente = 24;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa dos Sonhos, 2323, Porto'
+WHERE id_cliente = 25;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Colinas, 2424, Braga'
+WHERE id_cliente = 26;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida Principal, 2525, Coimbra'
+WHERE id_cliente = 27;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua da Liberdade, 2626, Setúbal'
+WHERE id_cliente = 28;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa da Praia, 2727, Viana do Castelo'
+WHERE id_cliente = 29;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Oliveiras, 2828, Leiria'
+WHERE id_cliente = 30;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida dos Sonhos, 2929, Funchal'
+WHERE id_cliente = 31;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Gaivotas, 3030, Ponta Delgada'
+WHERE id_cliente = 32;
+UPDATE CLIENTES
+SET morada_cliente = 'Praça do Sol, 3131, Guarda'
+WHERE id_cliente = 33;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida do Rio, 3232, Viseu'
+WHERE id_cliente = 34;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua dos Sinos, 3333, Covilhã'
+WHERE id_cliente = 35;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa dos Amores, 3434, Beja'
+WHERE id_cliente = 36;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Estrelas, 3535, Chaves'
+WHERE id_cliente = 37;
+UPDATE CLIENTES
+SET morada_cliente = 'Avenida dos Jardins, 3636, Castelo Branco'
+WHERE id_cliente = 38;
+UPDATE CLIENTES
+SET morada_cliente = 'Rua das Fontes, 3737, Évora'
+WHERE id_cliente = 39;
+UPDATE CLIENTES
+SET morada_cliente = 'Travessa dos Coqueiros, 3838, Portimão'
+WHERE id_cliente = 40;
