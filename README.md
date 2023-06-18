@@ -15,3 +15,9 @@
 6 - Para ver o [Modelo Entidade Associação](Modelo_Entidade_Associacao.png).
 
 7 - Para ver o [Modelo Relacional](Modelo_Relacional.png).
+
+## INSTRUÇÕES DE USO
+
+Após instalar a Base de Dados correr o ficheiro DDL_RetroSkill.sql que contém os scripts de criação e manipulação das Tabelas.
+A seguir deverá executar os scripts do ficheiro DML_Retroskill. dql para popular a Base de Dados.
+Existem scripts de actualização da Base de Dados que só deverão ser "descomentados" após os passos anteriores. Estes scripts inserem o campo morada em falta na tabela Clientes e inserem os dados. Poderá encontrar o script de actualização da tabela no ficheiro de criação de tabelas na linha 223. O Script para inserir os registos das moradas nos clientes encontram-se no ficheiro de inserção de dados a partir da linha 581.
