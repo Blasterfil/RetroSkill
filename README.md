@@ -4,7 +4,7 @@
 
 1 - Para criar a Base de Dados utilizar o ficheiro [Database_RetroSkill.sql](Database_RetroSkill.sql).
 
-2 - Para criar as Tabelas utilizar o ficheiro [DLL_RetroSkill.sql](DLL_RetroSkill.sql).
+2 - Para criar as Tabelas utilizar o ficheiro [DDL_RetroSkill.sql](DDL_RetroSkill.sql).
 
 3 - Para inserir os registos nas tabelas utilizar o ficheiro [DML_RetroSkill.sql](DML_RetroSkill.sql).
 
