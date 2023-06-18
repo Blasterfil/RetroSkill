@@ -12,7 +12,7 @@
 
 5 - Para aceder ao ficheiro de backup da Base de Dados clique [aqui](RetroSkill.bak).
 
-6 - Para ver o [Modelo Entidade Associação](Modelo_Entidade_Associacao.png).
+6 - Para ver o [Modelo Entidade Associação](Modelo_Entidade_Associacao_.png).
 
 7 - Para ver o [Modelo Relacional](Modelo_Relacional.png).
 
