@@ -26,7 +26,7 @@ Existem scripts de actualização da Base de Dados que só deverão ser "descome
 
 Estes scripts inserem o campo morada em falta na tabela Clientes e inserem os dados.
 
-Poderá encontrar o script de actualização da tabela no ficheiro de criação de tabelas na linha 223. 
+Poderá encontrar o script de actualização da tabela no ficheiro de criação de tabelas na linha 224. 
 
 O Script para inserir os registos das moradas nos clientes encontram-se no ficheiro de inserção de dados a partir da linha 581.
 
