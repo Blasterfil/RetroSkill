@@ -20,7 +20,7 @@
 
 Após instalar a Base de Dados correr o ficheiro DDL_RetroSkill.sql que contém os scripts de criação e manipulação das Tabelas.
 
-A seguir deverá executar os scripts do ficheiro DML_Retroskill. dql para popular a Base de Dados.
+A seguir deverá executar os scripts do ficheiro DML_Retroskill. sql para popular a Base de Dados.
 
 Existem scripts de actualização da Base de Dados que só deverão ser "descomentados" após os passos anteriores.
 
